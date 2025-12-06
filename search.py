@@ -73,7 +73,7 @@ def get_postings(term_dict: defaultdict) -> list:
         char_offsets = ujson.load(offset_file)
     
     # Open the complete index and term_offsets txt files
-    with open("txt/complete_index.txt", 'rb') as index_file, open('txt/term_offsets.txt', 'rb') as offset_file:
+    with open('txt/complete_index.txt', 'rb') as index_file, open('txt/term_offsets.txt', 'rb') as offset_file:
         # Iterate through each unique term in the query
         for term in term_dict.keys():
             # Get the first char of the term and its associated start & end position in the offset file
