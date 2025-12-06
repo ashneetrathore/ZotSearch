@@ -20,7 +20,7 @@ ZotSearch/
 └── .gitignore           # Specifies files and folders that shouldn't be included in the repo
 ```
 
-### :hammer: CONFIGURATION PART I | BUILD THE INVERTED INDEX
+### :hammer: CONFIGURATION
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ashneetrathore/ZotSearch.git
@@ -32,6 +32,7 @@ cd ZotSearch
 pip install nltk
 pip install sortedcontainers
 pip install beautifulsoup4
+pip install ujson
 ```
 
 **3. Run the program that builds the inverted index**
@@ -40,7 +41,7 @@ python3 invertedindex.py
 ```
 
 > [!TIP]
-> `invertedindex.py` can take several hours to complete. To avoid interruptions, consider running it in the background using [`tmux`](https://linuxize.com/post/getting-started-with-tmux/) or another terminal multiplexer
+> `invertedindex.py` can take a couple hours to complete. To avoid interruptions, consider running it in the background using [`tmux`](https://linuxize.com/post/getting-started-with-tmux/) or another terminal multiplexer
 
 **4. Once the program terminates, ```json``` and ```txt``` directories should exist in the project root, containing their respective files**
 
@@ -59,18 +60,12 @@ ZotSearch/
 └── ...
 ```
 
-### :rocket: CONFIGURATION PART II | RUN THE SEARCH ENGINE
-**1. Install the necessary libraries**
-```bash
-pip install nltk
-pip install ujson
-```
-
-**2. Launch a local Flask web server**
+### :rocket: EXECUTION
+Launch a local Flask web server
 ```bash
 python3 app.py
 ```
 
-**3. Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine**
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine
 
 ### :wrench: TRY IT OUT
