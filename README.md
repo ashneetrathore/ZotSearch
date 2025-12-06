@@ -20,7 +20,7 @@ ZotSearch/
 └── .gitignore           # Specifies files and folders that shouldn't be included in the repo
 ```
 
-### :hammer: CONFIGURATION PART I: BUILDING THE INVERTED INDEX
+### :hammer: CONFIGURATION PART I | BUILD THE INVERTED INDEX
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ashneetrathore/ZotSearch.git
@@ -42,7 +42,7 @@ python3 invertedindex.py
 > [!TIP]
 > `invertedindex.py` can take several hours to complete. To avoid interruptions, consider running it in the background using [`tmux`](https://linuxize.com/post/getting-started-with-tmux/) or another terminal multiplexer
 
-**4. Once the program terminates, you should see ```json``` and ```txt``` directories in the project root, each containing their respective files**
+**4. Once the program terminates, ```json``` and ```txt``` directories should exist in the project root, containing their respective files**
 
 ```bash
 ZotSearch/
@@ -59,7 +59,7 @@ ZotSearch/
 └── ...
 ```
 
-### :rocket: CONFIGURATION PART II: RUN THE SEARCH ENGINE
+### :rocket: CONFIGURATION PART II | RUN THE SEARCH ENGINE
 **1. Install the necessary libraries**
 ```bash
 pip install nltk
