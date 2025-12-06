@@ -39,9 +39,10 @@ pip install beautifulsoup4
 python3 invertedindex.py
 ```
 
-**4. Once the program terminates, you should see ```json``` and ```txt``` directories in the project root, each containing their respective files**
 > [!TIP]
 > `invertedindex.py` can take several hours to complete. To avoid interruptions, consider running it in the background using [`tmux`](https://linuxize.com/post/getting-started-with-tmux/) or another terminal multiplexer
+
+**4. Once the program terminates, you should see ```json``` and ```txt``` directories in the project root, each containing their respective files**
 
 ```bash
 ZotSearch/
