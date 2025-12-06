@@ -68,14 +68,14 @@ python3 app.py
 
 Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine
 
+> [!IMPORTANT]
+> Some of the links may return 403/404 errors because the content provided in developer.zip may be outdated compared to the current version of those web pages
+
 ### :wrench: TRY IT OUT
 1. After opening the application in your browser, enter a query into the search bar and click `Search`.
-2. The top 10 results will be displayed. Click on any of the links to view the page. To view additional pages beyond the top 10, click `Next` to load the next set of results.
-    
-    > [!IMPORTANT]
-    > Some of the links may return 403/404 errors because the content provided in developer.zip may be outdated compared to the current version of those web pages  
-4. To access the full list of results without interface pagination, open `search_results.txt` located in the `txt` directory.
-5. To check the query response time, open `time.txt` located in the `txt`directory.
+2. The top 10 results will be displayed. Click on any of the links to view the page. To view additional pages beyond the top 10, click `Next` to load the next set of results.  
+3. To access the full list of results without interface pagination, open `search_results.txt` located in the `txt` directory.
+4. To check the query response time, open `time.txt` located in the `txt`directory.
 
 Here are some sample query terms you can input:
 - Architecture
