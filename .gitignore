@@ -1,0 +1,12 @@
+# Ignore the web page files
+developer/
+developer.zip
+
+# Ignore the json folder
+json/
+
+# Ignore the txt folder
+txt/
+
+# Ignore Python bytecode cache files
+__pycache__/

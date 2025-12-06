@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+</head>
+
+<body>
+    <h1>CS 121 SEARCH ENGINE</h1>
+    <form method="post">
+        <input type="text" name="query" value="{{ query }}" placeholder="Enter a query" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+    <h2>Results:</h2>
+    <ul>
+        {% for url in results %}
+        <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if page > 1 %}<a href="?page={{ page - 1 }}&query={{ query }}">Previous</a>{% endif %}
+        <span>Page {{ page }} of {{ total_pages }}</span> {% if page
+        < total_pages %} <a href="?page={{ page + 1 }}&query={{ query }}">Next</a>{% endif %}
+
+    </div>
+    {% endif %}
+
+</body>
+
+</html>
