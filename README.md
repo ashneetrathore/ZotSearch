@@ -1,14 +1,14 @@
-## :mag: ZOT SEARCH
+# :mag: ZOT SEARCH
 
-### :open_book: OVERVIEW
+## :open_book: OVERVIEW
 Date: March 2025\
 Developer(s): Ashneet Rathore, Nura Ahmed Nasir Abdalla\
 Based on assignment instructions from Prof. Iftekhar Ahmed and Prof. Cristina Lopes
 
 
-### :gear: HOW IT WORKS
+## :gear: HOW IT WORKS
 
-### :open_file_folder: PROJECT FILE STRUCTURE
+## :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
 ZotSearch/
 │── app.py               # Launches Flask frontend and accepts queries
@@ -20,14 +20,13 @@ ZotSearch/
 └── .gitignore           # Specifies files and folders that shouldn't be included in the repo
 ```
 
-### :rocket: CONFIGURATION
+## :rocket: CONFIGURATION
+### :hammer: BUILD THE INVERTED INDEX
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ashneetrathore/ZotSearch.git
 cd ZotSearch
 ```
-
-:hammer: BUILD THE INVERTED INDEX
 
 **2. Install the necessary libraries**
 ```bash
@@ -41,4 +40,4 @@ g++ -std=c++17 app/main.cpp app/convert.cpp -o app
 ./app
 ```
 
-### :wrench: TRY IT OUT
+## :wrench: TRY IT OUT
