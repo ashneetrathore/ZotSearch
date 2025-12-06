@@ -10,13 +10,13 @@ Zot Search is a domain-specific search engine for UCI ICS (University of Califor
 ### :classical_building: ARCHITECTURE
 Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.
 
-The indexer component of the search engine builds a complete **[inverted index](https://www.cockroachlabs.com/blog/inverted-indexes/)** from the downloaded corpus [(see Configuration #3)](#anchor-point). It extracts terms from pages using **tokenization** and **lemmatization**, creates partial inverted indexes on disk, and finally merges these indexes into a single complete index.
+The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus [(see Configuration #3)](#anchor-point). It extracts terms from pages using **tokenization** and **lemmatization**, creates partial inverted indexes on disk, and finally merges these indexes into a single index.
 
 The question might arise *"Why create partial indexes only to merge them later?"*
 
 Real-world search engines are designed to handle data far larger than what can fit in memory. Designed with **scalability** in mind, this search engine is implemented under the assumption that the entire inverted index cannot be held in memory at once. During index construction, the indexer periodically offloads the in-memory hash map to disk as partial indexes. Even when building the complete index, the indexer writes the hash map to a file whenever a specified memory threshold is reached.
 
-The indexer is also responsible for computing and storing the relevancy score of each page for every term. This search engine uses a **[TF-IDF-based ranking algorithm](https://www.geeksforgeeks.org/machine-learning/understanding-tf-idf-term-frequency-inverse-document-frequency/)**, applying higher weights to text considered more important based off of HTML tags. For context, the completed inverted index is structured as a map of `(term → posting)` pairs, where each posting is itself a map of `(document id → relevancy score)` pairs.
+The indexer is also responsible for computing and storing the relevancy score of each page for every term. This search engine uses a **TF-IDF-based ranking algorithm**, applying higher weights to text considered more important based off of HTML tags. For context, the completed inverted index is structured as a map of `(term → posting)` pairs, where each posting is itself a map of `(document id → relevancy score)` pairs.
 
 The ranking and retrieval component of the search engine relies on a **multi-level tiered index** structure to achieve fast query response times. How was this structure created? Alongside constructing the complete index, the indexer generates
 - An index of  `(character, [start position, end position])` pairs
@@ -35,7 +35,7 @@ Think of the structure like this
 - The term offset index is the middle tier, pointing into the complete index
 - The character offset index is the highest tier, pointing into the term offset index
 
-After retrieval, the system computes relevance scores and and ranks the results, with the most relevant pages appearing at the top. The results are sent to the **Flask frontend** and displayed to the user.
+After retrieval, the system computes relevance scores and and ranks the results, with the most relevant pages appearing at the top. The results are sent to the **Flask** frontend and displayed to the user.
 
 ### :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
