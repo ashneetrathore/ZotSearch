@@ -18,11 +18,16 @@ Real-world search engines are designed to handle data far larger than what can f
 
 The indexer is also responsible for computing and storing the relevancy score of each page for every term. This search engine uses a **TF-IDF-based ranking algorithm**, applying higher weights to text considered more important based off of HTML tags. For context, the completed inverted index is structured as a map of `(term → posting)` pairs, where each posting is itself a map of `(document id → relevancy score)` pairs.
 
-The ranking and retrieval component of the search engine relies on a **multi-level tiered index** structure to achieve fast query response times. This structure is created during indexing, as alongside constructing the complete index, the indexer also generated
+The ranking and retrieval component of the search engine relies on a **multi-level tiered index** structure to achieve fast query response times. This structure is created during indexing, as alongside the complete index, the indexer also generated...
 - An index of  `(character, [start position, end position])` pairs
 - An index of `(term, position)` pairs
 
 Here, positions represent the offsets in the next tier of the index file, allowing the system to quickly jump to the relevant range of entries instead of scanning the complete index from the very beginning. Conceptually, this algorithm is similar to binary search in that it significantly reduces the **search space** by eliminating irrelevant regions.
+
+Think of the structure like this
+- The complete index is the lowest tier, containing the actual postings
+- The term offset index is the middle tier, pointing into the complete index
+- The character offset index is the highest tier, pointing into the term offset index
 
 To illustrate how retrieval works, consider the query "career"
 
@@ -30,12 +35,7 @@ To illustrate how retrieval works, consider the query "career"
 2. The algorithm jumps to the position 16000 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 16500 only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 8000000 and 8500000 - act as lower and upper bounds for searching in the completed inverted index.
 3. The algorithm jumps to the lower bound position 8000000 in the complete index and scans line by line until it finds the exact match for the term "career" or reaches the upper bound position 8500000.
 
-Think of the structure like this
-- The complete index is the lowest tier, containing the actual postings
-- The term offset index is the middle tier, pointing into the complete index
-- The character offset index is the highest tier, pointing into the term offset index
-
-After retrieval, the system computes relevance scores and and ranks the results, with the most relevant pages appearing at the top. The results are sent to the **Flask** frontend and displayed to the user.
+After retrieval, the system computes relevance scores and ranks the results, with the most relevant pages appearing at the top. The results are sent to the **Flask** frontend and displayed to the user.
 
 ### :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
