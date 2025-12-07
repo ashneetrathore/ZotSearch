@@ -128,3 +128,6 @@ Here are some sample query terms you can input:
 - Reinforcement learning
 - Security
 - Software engineering degree
+
+### :film_strip: DEMO
+![](demo.gif)
