@@ -35,7 +35,7 @@ To illustrate how retrieval works, consider the query "career"
 2. The algorithm jumps to the position 100 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 150 only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 4000 and 4300 - act as lower and upper bounds for searching in the completed inverted index.
 3. The algorithm jumps to the lower bound position 4000 in the complete index and scans line by line until it finds the exact match for the term "career" or reaches the upper bound position 4300.
 
-After retrieval, the system computes relevance scores and ranks the results, with the most relevant pages appearing at the top. The results are sent to the **Flask** frontend and displayed to the user.
+The retrieval system uses **OR query logic**, fetching a broad set of documents to maximize **recall**, while the relevancy scores computed by the indexer maximize **precision**. Together, recall and precision ensure that users receive results that are both complete and accurate. Retrieved documents are then ranked by relevance, with the most relevant pages appearing at the top. Finally, the results are sent to the **Flask** frontend and displayed to the user.
 
 ### :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
