@@ -130,4 +130,4 @@ Here are some sample query terms you can input:
 - Software engineering degree
 
 ### :film_strip: DEMO
-![](demo.gif)
+![Demo](demo.gif)
