@@ -18,7 +18,7 @@ Real-world search engines are designed to handle data far larger than what can f
 
 The indexer is also responsible for computing and storing the relevancy score of each page for every term. This search engine uses a **TF-IDF-based ranking algorithm**, applying higher weights to text considered more important based off of HTML tags. For context, the completed inverted index is structured as a map of `(term → posting)` pairs, where each posting is itself a map of `(document id → relevancy score)` pairs.
 
-The ranking and retrieval component of the search engine relies on a **multi-level tiered index** structure to achieve fast query response times. This structure is created during indexing, as alongside the complete index, the indexer also generated...
+The ranking and retrieval component relies on a **multi-level tiered index** structure - created during indexing - to achieve fast lookups. Alongside the complete index, the indexer also generated...
 - An index of  `(character, [start position, end position])` pairs
 - An index of `(term, position)` pairs
 
