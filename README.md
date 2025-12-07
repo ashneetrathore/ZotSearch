@@ -31,9 +31,9 @@ Think of the structure like this
 
 To illustrate how retrieval works, consider the query "career"
 
-1. The retrieval system looks at the first character of the term "career", which is "c". Using the character offset index, it retrieves the associated start and end positions for "c". These positions essentially represent the range of terms starting with "c" in the term offset index file. Let's say the start and end positions for "c" are [16000, 16500].
-2. The algorithm jumps to the position 16000 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 16500 only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 8000000 and 8500000 - act as lower and upper bounds for searching in the completed inverted index.
-3. The algorithm jumps to the lower bound position 8000000 in the complete index and scans line by line until it finds the exact match for the term "career" or reaches the upper bound position 8500000.
+1. The retrieval system looks at the first character of the term "career", which is "c". Using the character offset index, it retrieves the associated start and end positions for "c". These positions essentially represent the range of terms starting with "c" in the term offset index file. Let's say the start and end positions for "c" are [100, 150].
+2. The algorithm jumps to the position 100 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 150 only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 4000 and 4300 - act as lower and upper bounds for searching in the completed inverted index.
+3. The algorithm jumps to the lower bound position 4000 in the complete index and scans line by line until it finds the exact match for the term "career" or reaches the upper bound position 4300.
 
 After retrieval, the system computes relevance scores and ranks the results, with the most relevant pages appearing at the top. The results are sent to the **Flask** frontend and displayed to the user.
 
