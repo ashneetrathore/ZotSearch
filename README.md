@@ -18,17 +18,17 @@ Real-world search engines are designed to handle data far larger than what can f
 
 The indexer is also responsible for computing and storing the relevancy score of each page for every term. This search engine uses a **TF-IDF-based ranking algorithm**, applying higher weights to text considered more important based off of HTML tags. For context, the completed inverted index is structured as a map of `(term → posting)` pairs, where each posting is itself a map of `(document id → relevancy score)` pairs.
 
-The ranking and retrieval component of the search engine relies on a **multi-level tiered index** structure to achieve fast query response times. How was this structure created? Alongside constructing the complete index, the indexer generates
+The ranking and retrieval component of the search engine relies on a **multi-level tiered index** structure to achieve fast query response times. This structure is created during indexing, as alongside constructing the complete index, the indexer also generated
 - An index of  `(character, [start position, end position])` pairs
 - An index of `(term, position)` pairs
 
-Here, positions represent the offsets in the next tier of the index file, allowing the system to quickly jump to the relevant range of entries on disk instead of scanning the entire complete index. Conceptually, this algorithm is similar to binary search in that it significantly reduces the **search space** by eliminating irrelevant regions.
+Here, positions represent the offsets in the next tier of the index file, allowing the system to quickly jump to the relevant range of entries instead of scanning the complete index from the very beginning. Conceptually, this algorithm is similar to binary search in that it significantly reduces the **search space** by eliminating irrelevant regions.
 
 To illustrate how retrieval works, consider the query "career"
 
-1. The retrieval system looks at the first character of the term "career", which is "c". Using the character offset index, it retrieves the associated start and end positions for "c". These positions essentially represent the range of terms starting with "c" in the term offset index file. Let's say the start and end positions for "c" are [16153, 16657].
-2. The algorithm jumps to the position 16153 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, the scan stops immediately, because the end position in the character offset index, 16657, only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 86910726 and 87230475 - act as lower and upper bounds for searching in the completed inverted index.
-3. The algorithm jumps to the lower bound position in the complete index, 86910726, and scans line by line until it finds the exact  match for the term "career" or reaches the upper bound position, 87230475. 
+1. The retrieval system looks at the first character of the term "career", which is "c". Using the character offset index, it retrieves the associated start and end positions for "c". These positions essentially represent the range of terms starting with "c" in the term offset index file. Let's say the start and end positions for "c" are [16000, 16500].
+2. The algorithm jumps to the position 16000 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 16500 only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 8000000 and 8500000 - act as lower and upper bounds for searching in the completed inverted index.
+3. The algorithm jumps to the lower bound position 8000000 in the complete index and scans line by line until it finds the exact match for the term "career" or reaches the upper bound position 8500000.
 
 Think of the structure like this
 - The complete index is the lowest tier, containing the actual postings
@@ -111,7 +111,7 @@ Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the s
 4. To check the query response time, open `time.txt` located in the `txt`directory.
 
 > [!IMPORTANT]
-> Some of the links may return 403/404 errors because the content provided in developer.zip may be outdated compared to the current version of those web pages
+> Some of the links may return 403/404 errors because the content provided in `developer.zip` may be outdated compared to the current version of those web pages
 
 Here are some sample query terms you can input:
 - Architecture
