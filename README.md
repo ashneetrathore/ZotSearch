@@ -54,11 +54,11 @@ ZotSearch/
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ashneetrathore/ZotSearch.git
-cd ZotSearch
 ```
 
 **2. Install the necessary libraries**
 ```bash
+cd ZotSearch
 pip install nltk
 pip install sortedcontainers
 pip install beautifulsoup4
