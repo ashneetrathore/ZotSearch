@@ -46,7 +46,7 @@ ZotSearch/
 │── templates/          
 │   └── interface.html   # Renders the Flask frontend 
 │── README.md            # Project documentation
-│── .gitignore           # Specifies files and folders that shouldn't be included in the repo
+│── .gitignore           # Excludes files and folders from version control
 └── demo.gif             # GIF showing the message sending demo
 ```
 
