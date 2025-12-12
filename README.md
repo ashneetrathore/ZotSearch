@@ -7,6 +7,9 @@ Based on assignment instructions from Prof. Iftekhar Ahmed and Prof. Cristina Lo
 
 Zot Search is a domain-specific search engine for UCI ICS (University of California, Irvine Information and Computer Sciences), indexing 50,000+ departmental pages. The system consists of two components found in most modern search engines: an indexer, which processes and stores page content, and a retrieval system, which fetches results from the index and scores them for relevancy. Users can enter query terms and receive a ranked list of relevant results, with response times under 300 ms.
 
+## :film_strip: DEMO
+![Demo](demo.gif)
+
 ## :classical_building: ARCHITECTURE
 Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.
 
@@ -47,7 +50,7 @@ ZotSearch/
 │   └── interface.html   # Renders the Flask frontend 
 │── README.md            # Project documentation
 │── .gitignore           # Excludes files and folders from version control
-└── demo.gif             # GIF showing the message sending demo
+└── demo.gif             # GIF showing the searching demo
 ```
 
 ## :hammer: CONFIGURATION
@@ -129,6 +132,3 @@ Here are some sample query terms you can input:
 - Reinforcement learning
 - Security
 - Software engineering degree
-
-## :film_strip: DEMO
-![Demo](demo.gif)
