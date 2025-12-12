@@ -1,13 +1,13 @@
-## :mag: ZOT SEARCH
+# :mag: ZOT SEARCH
 
-### :open_book: OVERVIEW
+## :open_book: OVERVIEW
 Date: March 2025\
 Developer(s): Ashneet Rathore, Nura Ahmed Nasir Abdalla\
 Based on assignment instructions from Prof. Iftekhar Ahmed and Prof. Cristina Lopes
 
 Zot Search is a domain-specific search engine for UCI ICS (University of California, Irvine Information and Computer Sciences), indexing 50,000+ departmental pages. The system consists of two components found in most modern search engines: an indexer, which processes and stores page content, and a retrieval system, which fetches results from the index and scores them for relevancy. Users can enter query terms and receive a ranked list of relevant results, with response times under 300 ms.
 
-### :classical_building: ARCHITECTURE
+## :classical_building: ARCHITECTURE
 Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.
 
 The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus [(see Configuration #3)](#anchor-point). It extracts terms from pages using **tokenization** and **lemmatization**, creates partial inverted indexes on disk, and finally merges these indexes into a single index.
@@ -37,7 +37,7 @@ To illustrate how retrieval works, consider the query "career"
 
 The retrieval system uses **OR query logic**, fetching a broad set of documents to maximize **recall**, while the relevancy scores computed by the indexer maximize **precision**. Together, recall and precision ensure that users receive results that are both complete and accurate. Retrieved documents are then ranked by relevance, with the most relevant pages appearing at the top. Finally, the results are sent to the **Flask** frontend and displayed to the user.
 
-### :open_file_folder: PROJECT FILE STRUCTURE
+## :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
 ZotSearch/
 │── app.py               # Launches Flask frontend and accepts queries
@@ -50,7 +50,7 @@ ZotSearch/
 └── demo.gif             # GIF showing the message sending demo
 ```
 
-### :hammer: CONFIGURATION
+## :hammer: CONFIGURATION
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ashneetrathore/ZotSearch.git
@@ -97,7 +97,7 @@ ZotSearch/
 └── ...
 ```
 
-### :rocket: EXECUTION
+## :rocket: EXECUTION
 Launch a local Flask web server
 ```bash
 python3 app.py
@@ -105,7 +105,7 @@ python3 app.py
 
 Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine
 
-### :wrench: TRY IT OUT
+## :wrench: TRY IT OUT
 1. After opening the application in your browser, enter a query into the search bar and click `Search`.
 2. The top 10 results will be displayed. Click on any of the links to view the page. To view additional pages beyond the top 10, click `Next` to load the next set of results.  
 3. To access the full list of results without interface pagination, open `search_results.txt` located in the `txt` directory.
@@ -130,5 +130,5 @@ Here are some sample query terms you can input:
 - Security
 - Software engineering degree
 
-### :film_strip: DEMO
+## :film_strip: DEMO
 ![Demo](demo.gif)
