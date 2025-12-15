@@ -28,11 +28,11 @@ The ranking and retrieval component relies on a **multi-level tiered index** str
 Here, positions represent the offsets in the next tier of the index file, allowing the system to quickly jump to the relevant range of entries instead of scanning the complete index from the very beginning. Conceptually, this algorithm is similar to binary search in that it significantly reduces the **search space** by eliminating irrelevant regions.
 
 Think of the structure like this
-- The complete index is the lowest tier, containing the actual postings
-- The term offset index is the middle tier, pointing into the complete index
-- The character offset index is the highest tier, pointing into the term offset index
+- The complete index is the lowest tier, containing the actual postings.
+- The term offset index is the middle tier, pointing into the complete index.
+- The character offset index is the highest tier, pointing into the term offset index.
 
-To illustrate how retrieval works, consider the query "career"
+To illustrate how retrieval works, consider the query "career":
 
 1. The retrieval system looks at the first character of the term "career", which is "c". Using the character offset index, it retrieves the associated start and end positions for "c". These positions essentially represent the range of terms starting with "c" in the term offset index file. Let's say the start and end positions for "c" are [100, 150].
 2. The algorithm jumps to the position 100 in the term offset index file and scans line by line until it identifies the two terms in the term offset index that "career" falls between - for example, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 150 only indicates the maximum possible range to consider. The positions associated with the bounding terms - let's say it's 4000 and 4300 - act as lower and upper bounds for searching in the completed inverted index.
@@ -57,7 +57,6 @@ ZotSearch/
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ashneetrathore/ZotSearch.git
-cd ZotSearch
 ```
 
 **2. Install the necessary libraries**
@@ -72,6 +71,7 @@ pip install ujson
 
 **3. Download `developer.zip` from this [link](https://drive.google.com/file/d/1VDKl8NkZjRGGToOhHLVgtUEckZUxetwX/view?usp=sharing) to the project root directory and unzip it. This archive contains the full web page corpus for the search engine**
 ```bash
+cd ZotSearch
 unzip developer.zip
 ```
 
