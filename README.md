@@ -106,7 +106,7 @@ Launch a local Flask web server
 python3 app.py
 ```
 
-Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine.
 
 ## :wrench: TRY IT OUT
 1. After opening the application in your browser, enter a query into the search bar and click `Search`.
@@ -115,7 +115,7 @@ Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the s
 4. To check the query response time, open `time.txt` located in the `txt`directory.
 
 > [!IMPORTANT]
-> Some of the links may return 403/404 errors because the content provided in `developer.zip` may be outdated compared to the current version of those web pages
+> Some of the links may return 403/404 errors because the content provided in `developer.zip` may be outdated compared to the current version of those web pages.
 
 Here are some sample query terms you can input:
 - Architecture
