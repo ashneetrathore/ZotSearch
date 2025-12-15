@@ -106,7 +106,7 @@ Launch a local Flask web server
 python3 app.py
 ```
 
-> Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine.
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to use the search engine.
 
 ## :wrench: TRY IT OUT
 1. After opening the application in your browser, enter a query into the search bar and click `Search`.
