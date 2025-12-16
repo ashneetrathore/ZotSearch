@@ -43,7 +43,7 @@ The retrieval system uses **OR query logic**, fetching a broad set of documents 
 ## :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
 ZotSearch/
-│── app.py               # Launches Flask frontend and accepts queries
+│── app.py               # Launches Flask backend and renders frontend for query input
 │── search.py            # Performs search, and ranks and returns results
 │── inverted_index.py    # Builds the inverted index (preprocessing step)
 │── templates/          
