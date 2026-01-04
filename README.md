@@ -7,7 +7,7 @@ Based on assignment instructions from Prof. Iftekhar Ahmed and Prof. Cristina Lo
 
 Zot Search is a domain-specific search engine for UCI ICS (University of California, Irvine Information and Computer Sciences), supporting fast search across 55,000+ departmental pages. The system consists of two components found in most modern search engines: an indexer, which processes and stores page content, and a retrieval system, which fetches results from the index and scores them for relevancy. Users can enter query terms and receive a ranked list of relevant results, with response times under 300 ms.
 
-[Check out my related search technology project on GitHub - a web crawler](https://github.com/ashneetrathore/AntCrawl)
+Check out my related search technology project on GitHub - a web crawler - [here](https://github.com/ashneetrathore/AntCrawl)
 
 ## :film_strip: DEMO
 ![Demo](demo.gif)
