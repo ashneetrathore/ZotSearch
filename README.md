@@ -85,7 +85,7 @@ python3 invertedindex.py
 > [!TIP]
 > `invertedindex.py` can take a couple hours to complete. To avoid interruptions, consider running it in the background using [`tmux`](https://linuxize.com/post/getting-started-with-tmux/) or another terminal multiplexer
 
-**5. Once the program terminates, ```json``` and ```txt``` directories should exist in the project root, containing their respective files**
+**5. Once the program terminates, the following ```json``` and ```txt``` directories should exist in the project root, containing their respective files**
 
 ```bash
 ZotSearch/
