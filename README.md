@@ -7,7 +7,7 @@ Based on assignment instructions from Prof. Iftekhar Ahmed and Prof. Cristina Lo
 
 Zot Search is a domain-specific search engine for UCI ICS (University of California, Irvine Information and Computer Sciences), supporting fast search across 55,000+ departmental pages. The system consists of two components found in most modern search engines: an indexer, which processes and stores page content, and a retrieval system, which fetches results from the index and scores them for relevancy. Users can enter query terms and receive a ranked list of relevant results, with response times under 300 ms.
 
-Check out my related search technology project on GitHub - a web crawler - [here](https://github.com/ashneetrathore/AntCrawl)
+Check out my related search technology project on GitHub - a web crawler - [here](https://github.com/ashneetrathore/ant-crawl)
 
 ## :film_strip: DEMO
 ![Demo](demo.gif)
@@ -44,7 +44,7 @@ The retrieval system uses **OR query logic**, fetching a broad set of documents 
 
 ## :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
-ZotSearch/
+zot-search/
 │── app.py               # Launches Flask backend and renders frontend for query input
 │── search.py            # Performs search, and ranks and returns results
 │── inverted_index.py    # Builds the inverted index (preprocessing step)
@@ -58,7 +58,7 @@ ZotSearch/
 ## :hammer: CONFIGURATION
 **1. Clone the repository**
 ```bash
-git clone https://github.com/ashneetrathore/ZotSearch.git
+git clone https://github.com/ashneetrathore/zot-search.git
 ```
 
 **2. Install the necessary libraries**
@@ -73,7 +73,7 @@ pip install ujson
 
 **3. Download `developer.zip` from this [link](https://drive.google.com/file/d/1VDKl8NkZjRGGToOhHLVgtUEckZUxetwX/view?usp=sharing) to the project root directory and unzip it. This archive contains the full web page corpus for the search engine**
 ```bash
-cd ZotSearch
+cd zot-search
 unzip developer.zip
 ```
 
@@ -88,7 +88,7 @@ python3 invertedindex.py
 **5. Once the program terminates, the following ```json``` and ```txt``` directories should exist in the project root, containing their respective files**
 
 ```bash
-ZotSearch/
+zot-search/
 ├── json/
 │   ├── char_offsets.json      # Stores character offsets for fast searching
 │   ├── partial_index1.json    # Stores partial index of terms
