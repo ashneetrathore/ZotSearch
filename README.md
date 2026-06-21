@@ -12,7 +12,7 @@ Zot Search is a domain-specific search engine for UCI ICS (University of Califor
 ## :gear: HOW IT WORKS
 Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.
 
-The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus [(see Configuration #3)](#anchor-point). It extracts terms from pages using **tokenization** and **lemmatization**, creates partial inverted indexes on disk, and finally merges these indexes into a single index.
+The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus. It extracts terms from pages using **tokenization** and **lemmatization**, creates partial inverted indexes on disk, and finally merges these indexes into a single index.
 
 Real-world search engines are designed to handle data far larger than what can fit in memory. Designed with **scalability** in mind, this search engine is implemented under the assumption that the entire inverted index cannot be held in memory at once. During index construction, the indexer periodically offloads the in-memory hash map to disk as partial indexes. Even when building the complete index, the indexer writes the hash map to a file whenever a specified memory threshold is reached.
 
@@ -29,7 +29,7 @@ To illustrate how retrieval works, consider the query "career":
 2. The algorithm jumps to the position 100 in the term offset index and scans until it finds the two terms "career" falls between - say, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 150 only indicates the maximum possible range to consider. The positions associated with the bounding terms - say 4000 and 4300 - become the lower and upper bounds for searching the completed inverted index.
 3. The algorithm jumps to the lower bound position 4000 in the complete index and scans until it finds the exact match for the term "career" or reaches the upper bound position 4300.
 
-The retrieval system uses **OR query logic**, fetching a broad set of documents to maximize **recall**, while the relevancy scores computed by the indexer maximize **precision**. Retrieved documents are then ranked by relevance, with the most relevant pages appearing at the top. Finally, the results are sent from the **Flask** backend to the user's browser for display.
+The retrieval system uses **OR query logic**, fetching a broad set of documents to maximize **recall**, while the relevancy scores computed by the indexer maximize **precision**. Retrieved documents are then ranked by relevance, with the most relevant pages appearing at the top. Finally, the results are served to the frontend via a lightweight **Flask** backend for display.
 
 ## :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
