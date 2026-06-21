@@ -10,7 +10,7 @@ Zot Search is a domain-specific search engine for UCI ICS (University of Califor
 ![Demo](demo.gif)
 
 ## :gear: HOW IT WORKS
-Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.\
+Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.
 
 The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus. It uses **BeautifulSoup** to parse raw HTML and extract text, and then processes terms using **tokenization** and **lemmatization** via **NLTK**. Partial inverted indexes are created on disk, and finally these indexes are merged into a single index.
 
