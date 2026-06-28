@@ -12,24 +12,24 @@ Zot Search is a domain-specific search engine for UCI ICS (University of Califor
 ## :gear: HOW IT WORKS
 Built in **Python**, the search engine's architecture prioritizes memory efficiency and fast query response times.
 
-The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus. It uses **BeautifulSoup** to parse raw HTML and extract text, and then processes terms using **tokenization** and **lemmatization** via **NLTK**. Partial inverted indexes are created on disk, and finally these indexes are merged into a single index.
+The indexer component of the search engine builds a complete **inverted index** from the downloaded corpus. It uses **BeautifulSoup** to parse raw HTML and extract text, and then processes terms using **tokenization** and **stemming** via **NLTK**. Partial inverted indexes are created on disk, and finally these indexes are merged into a single index.
 
 Real-world search engines are designed to handle data far larger than what can fit in memory. Designed with **scalability** in mind, this search engine is implemented under the assumption that the entire inverted index cannot be held in memory at once. During index construction, the indexer periodically offloads the in-memory hash map to disk as partial indexes. Even when building the complete index, the indexer writes the hash map to a file whenever a specified memory threshold is reached.
 
 The indexer is also responsible for computing and storing the relevancy score of each page for every term. This search engine uses a **TF-IDF-based ranking algorithm**, applying higher weights to text considered more important based off of HTML tags. For context, the completed inverted index is structured as a map of `(term → posting)` pairs, where each posting is itself a map of `(document id → relevancy score)` pairs.
 
-The ranking and retrieval component relies on a **multi-level index** structure, created during indexing, to achieve fast lookups. Alongside the complete index, the indexer also generated...
+The **ranking and retrieval component** relies on a multi-level index structure, created during indexing, to achieve fast lookups. Alongside the complete index, the indexer also generated...
 - An index of  `(character, [start position, end position])` pairs
 - An index of `(term, position)` pairs
 
-Positions represent offsets in the next level of the index, allowing the system to jump directly to the relevant range of entries rather than scanning the complete index from the beginning. Conceptually, this algorithm is similar to binary search in that it significantly reduces the **search space** by eliminating irrelevant regions.
+Positions represent offsets in the next level of the index, allowing the system to jump directly to the relevant range of entries rather than scanning the complete index from the beginning. Conceptually, this algorithm is similar to binary search in that it significantly reduces the search space by eliminating irrelevant regions.
 
 To illustrate how retrieval works, consider the query "career":
 1. The retrieval system looks at the first character of the term "career" -"c" - and uses the character offset index to retrieve its start and end positions, representing the range of terms starting with "c" in the term offset index. Let's say the start and end positions for "c" are [100, 150].
 2. The algorithm jumps to the position 100 in the term offset index and scans until it finds the two terms "career" falls between - say, "cantral" and "carridin". Once these bounding terms are found, scanning terminates because the end position 150 only indicates the maximum possible range to consider. The positions associated with the bounding terms - say 4000 and 4300 - become the lower and upper bounds for searching the completed inverted index.
 3. The algorithm jumps to the lower bound position 4000 in the complete index and scans until it finds the exact match for the term "career" or reaches the upper bound position 4300.
 
-The retrieval system uses **OR query logic**, fetching a broad set of documents to maximize **recall**, while the relevancy scores computed by the indexer maximize **precision**. Retrieved documents are then ranked by relevance, with the most relevant pages appearing at the top. Finally, the results are served to the frontend via a lightweight **Flask** backend for display.
+The retrieval system uses **OR query logic**, fetching a broad set of documents to maximize **recall**, while the relevancy scores computed by the indexer maximize **precision**. Retrieved documents are then ranked by relevance, with the most relevant pages appearing at the top. Finally, the results are served to the frontend via a lightweight Flask backend for display.
 
 ## :open_file_folder: PROJECT FILE STRUCTURE
 ```bash
