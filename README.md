@@ -4,7 +4,7 @@
 Date: March 2025\
 Developer(s): Ashneet Rathore, Nura Ahmed Nasir Abdalla
 
-Zot Search is a domain-specific search engine for UCI ICS (University of California, Irvine Information and Computer Sciences), supporting fast search across 55,000+ departmental pages. The system consists of two components found in most modern search engines: an indexer, which processes and stores page content, and a retrieval system, which fetches results from the index and scores them for relevancy. Users can enter query terms and receive a ranked list of relevant results, with response times under 300 ms.
+Zot Search is a domain-specific search engine for University of California, Irvine Information and Computer Sciences (UCI ICS), supporting fast search across 55,000+ departmental pages. The system consists of two components found in most modern search engines: an indexer, which processes and stores page content, and a retrieval system, which fetches results from the index and scores them for relevancy. Users can enter query terms and receive a ranked list of relevant results, with response times under 300 ms.
 
 ## :film_strip: DEMO
 ![Demo](demo.gif)
